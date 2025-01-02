@@ -1,0 +1,2 @@
+When ran in Save mode, the RefDrop code will save a large amount of network data in this folder.
+Any new Save run will first delete the previous data.
