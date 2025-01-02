@@ -1,7 +1,7 @@
 # SD-RefDrop
 This is an extension for the [ReForge version](https://github.com/Panchovix/stable-diffusion-webui-reForge) of the Automatic1111 Stable Diffusion web interface. Its purpose is to implement RefDrop image consistency based on [RefDrop: Controllable Consistency in Image or Video Generation via Reference Feature Guidance](https://arxiv.org/abs/2405.17661) (Fan et al. 2024). RefDrop allows for either consistency or diversification of diffusion model outputs based on an intially recorded output. 
 
-For real-world application purposes, you can find a prompt and a seed with an output character or scene that you like and then apply aspects of that character to all future outputs. Alternatively you can also similarly find a seed with features you want to avoid and remove aspects of that image in future outputs. This simularity or diversification is controlled by the RFG Coefficent, which is a parameter that ranges from -1 to 1. Positive values force the outputs to be similar to the initial image while negative values ensure differences. It seems to work best in the 0.2 to 0.3 range for consistency or -0.2 to -0.3 range for diversification.
+For real-world application purposes, you can find a prompt and a seed with an output character or scene that you like and then apply aspects of that character to all future outputs. Alternatively you can also similarly find a seed with features you want to avoid and remove aspects of that image in future outputs. This level of consistency or diversification is controlled by the RFG Coefficent, which is a parameter that ranges from -1 to 1. Positive values force the outputs to be similar to the initial image while negative values ensure differences. It seems to work best in the 0.2 to 0.3 range for consistency or -0.2 to -0.3 range for diversification.
 
 ## Examples
 The "Original" images were generated using a random seed, and then following images were made with a singular different seed. For the different seed a slight change was made to the prompt, denoted in brackets below:
@@ -19,15 +19,18 @@ graphic t-shirt,
 All were generated at 512x768 at CFG 7 using `Euler a` with 20 sampling steps. For this first set, all images were made using the WAI-CUTE-v6.0 fine tune of SDXL.
 
 | Original | Dancing | Merge | Diversification |
-| <img src="examples/base.png" =250x> | <img src="examples/dance_base.png" =250x> | <img src="examples/dance_merge.png" =250x> | <img src="examples/dance_diff.png" =250x> |
+| -------- | -------- | -------- | -------- |
+| ![Base](examples/base.png) | ![Dance Base](examples/dance_base.png) | ![Dance Merge](examples/dance_merge.png) | ![Dance Diff](examples/dance_diff.png) |
 
 | Original | Studying | Merge | Diversification |
-| <img src="examples/base.png" =250x> | <img src="examples/studying_base.png" =250x> | <img src="examples/studying_merge.png" =250x> | <img src="examples/studying_diff.png" =250x> |
+| -------- | -------- | -------- | -------- |
+| ![Base](examples/base.png) | ![Studying Base](examples/studying_base.png) | ![Studying Merge](examples/studying_merge.png) | ![Studying Diff](examples/studying_diff.png) |
 
 The following images use the same original saved output, but then are merged or diversified with using a separate, realistic fine tuned SDXL model. In practice, I've seen how this method can apply unrealistic aspects to a model trained on photos via consistency or emphasize the details and realism of an output using a negative RFG coefficent from an initial input from a less detailed model. The authors of the original paper also showed how this output diversification method can be used to help overcome stereotypes the model may have learned.
 
 | Original | Studying | Merge | Diversification |
-| <img src="examples/base.png" =250x> | <img src="examples/real_base.png" =250x> | <img src="examples/real_merge.png" =250x> | <img src="examples/real_diff.png" =250x> |
+| -------- | -------- | -------- | -------- |
+| ![Base](examples/base.png) | ![Real Base](examples/real_base.png) | ![Real Merge](examples/real_merge.png) | ![Real Diff](examples/real_diff.png) |
 
 ## Usage Guide
 Install by using the `Extensions` tab from within the ReForge web interface. After reloading the interface on the `txt2img` tab select `RefDrop` from the drop down menu at the bottom under `Script`.
@@ -36,6 +39,7 @@ First, find a specific image you want to use as the base for merging. Once you'v
 
 > [!WARNING]
 > This will save a large amount of data to the `extensions\refdrop\latents` folder. The small base image above took 5,602 files totalling 7.3GB. More detailed images using hires fix and ADetailer can go 100+GB. However, this data is only written to disk during the `Save` step, and the files generated and cleared out every time you run a new `Save`.
+
 > [!TIP]
 > This extension only saves one base image data at a time. If you have multiple images you care about, it might be easiest to save the details of the prompt and seed and rerun the `Save` step as needed. Alternatively, you can backup the contents of the `extensions\refdrop\latents` folder, but this is a lot of data.
 
