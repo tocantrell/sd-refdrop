@@ -20,17 +20,17 @@ All were generated at 512x768 at CFG 7 using `Euler a` with 20 sampling steps. F
 
 | Original | Dancing | Merge | Diversification |
 | -------- | -------- | -------- | -------- |
-| ![Base](examples/base.png | width=100) | ![Dance Base](examples/dance_base.png | width=100) | ![Dance Merge](examples/dance_merge.png | width=100) | ![Dance Diff](examples/dance_diff.png | width=100) |
+| ![Base](examples/base.png =100) | ![Dance Base](examples/dance_base.png =100) | ![Dance Merge](examples/dance_merge.png =100) | ![Dance Diff](examples/dance_diff.png =100) |
 
 | Original | Studying | Merge | Diversification |
 | -------- | -------- | -------- | -------- |
-| ![Base](examples/base.png | width=100) | ![Studying Base](examples/studying_base.png | width=100) | ![Studying Merge](examples/studying_merge.png | width=100) | ![Studying Diff](examples/studying_diff.png | width=100) |
+| ![Base](examples/base.png =100) | ![Studying Base](examples/studying_base.png =100) | ![Studying Merge](examples/studying_merge.png =100) | ![Studying Diff](examples/studying_diff.png =100) |
 
 The following images use the same original saved output, but then are merged or diversified with using a separate, realistic fine tuned SDXL model. In practice, I've seen how this method can apply unrealistic aspects to a model trained on photos via consistency or emphasize the details and realism of an output using a negative RFG coefficent from an initial input from a less detailed model. The authors of the original paper also showed how this output diversification method can be used to help overcome stereotypes the model may have learned.
 
 | Original | Studying | Merge | Diversification |
 | -------- | -------- | -------- | -------- |
-| ![Base](examples/base.png | width=100) | ![Real Base](examples/real_base.png | width=100) | ![Real Merge](examples/real_merge.png | width=100) | ![Real Diff](examples/real_diff.png | width=100) |
+| ![Base](examples/base.png =100) | ![Real Base](examples/real_base.png =100) | ![Real Merge](examples/real_merge.png =100) | ![Real Diff](examples/real_diff.png =100) |
 
 ## Usage Guide
 Install by using the `Extensions` tab from within the ReForge web interface. After reloading the interface on the `txt2img` tab select `RefDrop` from the drop down menu at the bottom under `Script`.
