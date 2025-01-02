@@ -18,19 +18,19 @@ graphic t-shirt,
 ```
 All were generated at 512x768 at CFG 7 using `Euler a` with 20 sampling steps. For this first set, all images were made using the WAI-CUTE-v6.0 fine tune of SDXL.
 
-| Original | Dancing | Merge | Diversification |
-| -------- | -------- | -------- | -------- |
-| ![Base](examples/base.png =100x) | ![Dance Base](examples/dance_base.png =100x) | ![Dance Merge](examples/dance_merge.png =100x) | ![Dance Diff](examples/dance_diff.png =100x) |
+| Original | Dancing | Consistent | Diversify |
+| ------------ | ------------ | ------------ | ------------ |
+| ![Base](examples/base.png) | ![Dance Base](examples/dance_base.png) | ![Dance Merge](examples/dance_merge.png) | ![Dance Diff](examples/dance_diff.png) |
 
-| Original | Studying | Merge | Diversification |
-| -------- | -------- | -------- | -------- |
-| ![Base](examples/base.png =100x) | ![Studying Base](examples/studying_base.png =100x) | ![Studying Merge](examples/studying_merge.png =100x) | ![Studying Diff](examples/studying_diff.png =100x) |
+| Original | Study | Consistent | Diversify |
+| ------------ | ------------ | ------------ | ------------ |
+| ![Base](examples/base.png) | ![Studying Base](examples/studying_base.png) | ![Studying Merge](examples/studying_merge.png) | ![Studying Diff](examples/studying_diff.png) |
 
 The following images use the same original saved output, but then are merged or diversified with using a separate, realistic fine tuned SDXL model. In practice, I've seen how this method can apply unrealistic aspects to a model trained on photos via consistency or emphasize the details and realism of an output using a negative RFG coefficent from an initial input from a less detailed model. The authors of the original paper also showed how this output diversification method can be used to help overcome stereotypes the model may have learned.
 
-| Original | Studying | Merge | Diversification |
-| -------- | -------- | -------- | -------- |
-| ![Base](examples/base.png =100x) | ![Real Base](examples/real_base.png =100x) | ![Real Merge](examples/real_merge.png =100x) | ![Real Diff](examples/real_diff.png =100x) |
+| Original | Studying | Consistent | Diversify |
+| ------------ | ------------ | ------------ | ------------ |
+| ![Base](examples/base.png) | ![Real Base](examples/real_base.png) | ![Real Merge](examples/real_merge.png) | ![Real Diff](examples/real_diff.png) |
 
 ## Usage Guide
 Install by using the `Extensions` tab from within the ReForge web interface. After reloading the interface on the `txt2img` tab select `RefDrop` from the drop down menu at the bottom under `Script`.
