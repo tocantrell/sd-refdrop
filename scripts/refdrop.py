@@ -47,10 +47,8 @@ class Script(scripts.Script):
 
         else:
 
-            k_folder = 'extensions/refdrop/latents/k/'
-            #k_folder = current_extension_directory+'/latents/k/'
-            v_folder = 'extensions/refdrop/latents/v/'
-            #v_folder = current_extension_directory+'/latents/v/'
+            k_folder = 'latents/k/'
+            v_folder = 'latents/v/'
 
             CrossAttention.v_count = 0
             CrossAttention.k_count = 0
