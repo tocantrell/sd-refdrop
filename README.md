@@ -33,12 +33,12 @@ The following images use the same original saved output, but then are merged or 
 | ![Base](examples/base.png) | ![Real Base](examples/real_base.png) | ![Real Merge](examples/real_merge.png) | ![Real Diff](examples/real_diff.png) |
 
 ## Usage Guide
-Install by using the `Extensions` tab from within the ReForge web interface. After reloading the interface on the `txt2img` tab select `RefDrop` from the drop down menu at the bottom under `Script`.
+Install by using the `Extensions` tab from within the ReForge web interface. Navigate to the `Install from URL` tab and copy and enter the URL to this repository then click `Install`. When it finishes, go to the `Installed` tab and click `Apply and restart UI`. After reloading the interface, on the `txt2img` tab select `RefDrop` from the drop down menu at the bottom under `Script`.
 
 First, find a specific image you want to use as the base for merging. Once you've found the single image output you'll use, save its seed using the recycle symbol next to the `Seed` field. Click `Enabled` from the RefDrop menu and under `Mode` select `Save`. The RFG Coefficient doesn't matter for this first step, as we are only saving the network details about the base image for the next step.
 
 > [!WARNING]
-> This will save a large amount of data to the `extensions\refdrop\latents` folder. The small base image above took 5,602 files totalling 7.3GB. More detailed images using hires fix and ADetailer can go 100+GB. However, this data is only written to disk during the `Save` step, and the files generated and cleared out every time you run a new `Save`.
+> This will save a large amount of data to the `extensions\refdrop\latents` folder. The small base image above took 5,602 files totalling 7.3GB. More detailed images using hires fix and ADetailer can go much larger. However, this data is only written to disk during the `Save` step, and these files are deleted and replaced every time you run a new `Save`.
 
 > [!TIP]
 > This extension only saves one base image data at a time. If you have multiple images you care about, it might be easiest to save the details of the prompt and seed and rerun the `Save` step as needed. Alternatively, you can backup the contents of the `extensions\refdrop\latents` folder, but this is a lot of data.
