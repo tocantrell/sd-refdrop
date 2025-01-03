@@ -79,8 +79,14 @@ class Script(scripts.Script):
                     torch.save(k, k_file)
                     torch.save(v, v_file)
                 elif CrossAttention.refdrop == 'Use':
-                    v_prev = torch.load(v_file, weights_only=True)
-                    k_prev = torch.load(k_file, weights_only=True)
+                    try:
+                        v_prev = torch.load(v_file, weights_only=True)
+                        k_prev = torch.load(k_file, weights_only=True)
+                    except:
+                        #Will not have the same number of files with hires fix if the number of text token changes between runs.
+                        #Running without the last few K and V files will not significantly change the results.
+                        print('Saved RefDrop file not found. Continuing without RefDrop.')
+                        CrossAttention.refdrop = 'Done'
 
                 if mask is None:
                     out = attention.optimized_attention(q, k, v, self.heads)
