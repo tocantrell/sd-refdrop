@@ -33,7 +33,7 @@ The following images use the same original saved output, but then are merged or 
 | ![Base](examples/base.png) | ![Real Base](examples/real_base.png) | ![Real Merge](examples/real_merge.png) | ![Real Diff](examples/real_diff.png) |
 
 ## Usage Guide
-Install by using the `Extensions` tab from within the ReForge web interface. Navigate to the `Install from URL` tab and copy and enter the URL to this repository then click `Install`. When it finishes, go to the `Installed` tab and click `Apply and restart UI`. After reloading the interface, on the `txt2img` tab select `RefDrop` from the drop down menu at the bottom under `Script`.
+Install by using the `Extensions` tab from within the ReForge web interface. Navigate to the `Install from URL` tab and copy and enter the URL to this repository then click `Install`. When it finishes, go to the `Installed` tab and click `Apply and restart UI`. After reloading the interface, on the `txt2img` tab select `RefDrop` from the list of parameters.
 
 First, find a specific image you want to use as the base for consistency or diversification. Once you've found the single image output you'll use, save its seed using the recycle symbol next to the `Seed` field. Click `Enabled` from the RefDrop menu and under `Mode` select `Save`. The RFG Coefficient doesn't matter for this first step, because at this point we are only saving the network details about the base image.
 
@@ -43,10 +43,16 @@ First, find a specific image you want to use as the base for consistency or dive
 > [!TIP]
 > This extension only saves one base image data at a time. If you have multiple images you care about, it might be easiest to save the details of the prompt and seed and rerun the `Save` step as needed. Alternatively, you can backup the contents of the `extensions\refdrop\latents` folder, but this is a lot of data.
 
+The amount of data stored can be limited by using the `Save Percentage` parameter. This option also has the added benefit of decreasing the overall run time during `Use` mode. However, using it too much can decrease the overall effect of RefDrop. Using the "studying" example, we can see this how the outputs are affected at different percentages below.
+
+ |   Studying |   75% | 50% |  10% |
+| ------------ | ------------ | ------------ | ------------ |
+| ![Studying Base](examples/studying_base.png) | ![Studying 75%](examples/studying_75.png) | ![Studying 50%](examples/studying_50.png) | ![Studying 10%](examples/studying_10.png) |
+
 After the save step finishes and you have recreated the original image you want to use for the process, you can now switch the mode to `Use` and set the RFG coefficent as described earlier. While `Enabled` is selected all outputs will use RefDrop.
 
 > [!IMPORTANT]
-> When generating new images using RefDrop, the network parameters must be the same as the original saved image. In practical terms, this means only use models from the same lineage (for example, if using SD1.5 for the base image, only use SD1.5 fine tunes for the output). Also keep the `Width`, `Height`, `Sampling method`, `Schedule type`, and `Sampling steps` all the same. Additionally, keep the `Hires. fix`, `ADetailer`, or similar extra networks all the same between saving and using RefDrop. For `ADetailer`, this means making sure that the same number of objects are detected every time, by specifying the number under the `Detection` tab's `Mask only the top k` option.
+> When generating new images using RefDrop, the network parameters must be the same as the original saved image. In practical terms, this means only use models from the same lineage (for example, if using SD1.5 for the base image, only use SD1.5 fine tunes for the output). This RefDrop implementation will use the embedding data available from the `Save` step and then continue on as normal. I have not seen any issues with changing the height, width, sampling method, etc. between `Save` and `Use`.
 
 ## Afterword
 A big thank you to the author of this paper for coming up with the idea and taking the time to talk with me about it at NeurIPS 2024. There is a lot left to explore in this area, including applicability to other areas such as video. One important point that needs to be addressed for this implementation is figuring out how to prune what needs to be saved in order to acheive the desired results. The current implementation is saving all K and V values that are created at any point during the image generation, which is probably overkill.
