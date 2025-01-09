@@ -38,10 +38,10 @@ Install by using the `Extensions` tab from within the ReForge web interface. Nav
 First, find a specific image you want to use as the base for consistency or diversification. Once you've found the single image output you'll use, save its seed using the recycle symbol next to the `Seed` field. Click `Enabled` from the RefDrop menu and under `Mode` select `Save`. The RFG Coefficient doesn't matter for this first step, because at this point we are only saving the network details about the base image.
 
 > [!WARNING]
-> This will save a large amount of data to the `extensions\refdrop\latents` folder. The small "Original" image above took 5,602 files totalling 7.3GB. More detailed images using hires fix and ADetailer can go much larger. However, this data is only written to disk during the `Save` step, and these files are deleted and replaced every time you run a new `Save`.
+> Using `Disk` will save a large amount of data to the `extensions\refdrop\latents` folder. The small "Original" image above took 5,602 files totalling 7.3GB. More detailed images using hires fix can go much larger. However, this data is only written to disk during the `Save` step, and these files are deleted and replaced every time you run a new `Save`. Alternatively, there is a dedicated button for deleting all RefDrop related latent files and data in memory.
 
 > [!TIP]
-> This extension only saves one base image data at a time. If you have multiple images you care about, it might be easiest to save the details of the prompt and seed and rerun the `Save` step as needed. Alternatively, you can backup the contents of the `extensions\refdrop\latents` folder, but this is a lot of data.
+> This extension only saves one base image data at a time. If you have multiple images you care about, it might be easiest to save the details of the prompt and seed and rerun the `Save` step as needed. Alternatively, you can run in `Disk` save mode and backup the contents of the `extensions\refdrop\latents` folder, but this is a lot of data.
 
 The amount of data stored can be limited by using the `Save Percentage` parameter. This option also has the added benefit of decreasing the overall run time during `Use` mode. However, using it too much can decrease the overall effect of RefDrop. Using the "studying" example, we can see this how the outputs are affected at different percentages below.
 
