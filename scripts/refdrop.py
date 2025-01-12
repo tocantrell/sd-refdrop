@@ -229,7 +229,7 @@ class Script(scripts.Script):
                         CrossAttention.refdrop = 'Done'
                         v_refdrop = None
                         k_refdrop = None
-                if (CrossAttention.refdrop == 'Use')&(CrossAttention.to_disk!=True)&(CrossAttention.layer_name in CrossAttention.layer_refdrop):
+                elif (CrossAttention.refdrop == 'Use')&(CrossAttention.to_disk!=True)&(CrossAttention.layer_name in CrossAttention.layer_refdrop):
                     try:
                         v_refdrop = CrossAttention.v_dict[v_file].to('cuda')
                         k_refdrop = CrossAttention.k_dict[k_file].to('cuda')
